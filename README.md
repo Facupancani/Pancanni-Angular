@@ -1,27 +1,34 @@
 # Pancanni
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Facundo Pancani 42.594.040
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tematica
 
-## Build
+Se eligió como temática una pagina de tragos de alcoholicos, siguiendo de base el trabajo hecho en clase con las cervezas.
+La tematica de la pagina "Pancanni" se basa en lo que podria escalar a una carta de tragos o incluso, la pagina del bar.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Datos del estudiante
 
-## Running unit tests
+### Nombre y Apellido
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Facundo Pancani
 
-## Running end-to-end tests
+### DNI
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+42594040
 
-## Further help
+### Email
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+facupancani@gmail.com
+
+### Sede
+
+Tandil
+
+Repo git:
+https://github.com/Facupancani/Pancanni-Angular
+Link stackblitz:
+stackblitz.com/~/github.com/Facupancani
