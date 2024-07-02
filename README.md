@@ -1,10 +1,6 @@
 # Pancanni
 
 
-
-# Facundo Pancani 42.594.040
-
-
 ## Tematica
 
 Se eligió como temática una pagina de tragos de alcoholicos, siguiendo de base el trabajo hecho en clase con las cervezas.
