@@ -14,14 +14,13 @@ export class DrinkCartService {
   constructor() { }
 
   addToCart(drink: drink) {
-    let item: drink = this._cartList.find((v1) => v1.name == drink.name);
+    let item: drink = this._cartList.find((v1) => v1.name === drink.name);
     if(!item){
       this._cartList.push({... drink});
     }
     else{
       item.quantity += drink.quantity;
     }
-    console.log(this.cartList);
     this.cartList.next(this._cartList);
   }
 

@@ -18,10 +18,13 @@
             <td>{{drink.type}}</td>
             <td>${{drink.price}}</td>
             <td>
-                <app-input-integer [(quantity)]="drink.quantity" [maxQantity]="drink.stock" *ngIf="drink.stock" (maxReached)="maxReached($event)"></app-input-integer>
+                <app-input-integer [(quantity)]="drink.quantity" [maxQuantity]="drink.stock" *ngIf="drink.stock" (maxReached)="maxReached($event)"></app-input-integer>
             </td>
-            <td><button class="btn btn-primary" (click)="addToCart(drink)">Añadir</button></td>
-            <td><span class="badge text-bg-warning" *ngIf="drink.stock==0">Sin stock</span></td>
+            <td><button class="btn btn-primary" *ngIf="drink.stock" (click)="addToCart(drink)">Añadir</button></td>
+            <td>
+                <span class="badge text-bg-success" *ngIf="drink.clearance">Oferta</span>
+                <span class="badge text-bg-warning" *ngIf="drink.stock==0">Sin stock</span>
+            </td>
         </tr>
     </tbody>
 </table>
