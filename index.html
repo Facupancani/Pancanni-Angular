@@ -18,18 +18,21 @@
           <nav>
                   <div id="overlay"></div>
                     <div class="nav-left">
-                        <button id="burgerNav" type="button" aria-expanded="false" aria-controls="menu-desp" aria-label="Abrir menú">
-                                <div id="rec1" class="rect"></div>
-                                <div id="rec2" class="rect"></div>
-                                <div id="rec3" class="rect"></div>
+                        <button id="burgerNav" type="button" aria-expanded="false" aria-controls="menu-desp">
+                                <span class="burger-icon">
+                                        <div id="rec1" class="rect"></div>
+                                        <div id="rec2" class="rect"></div>
+                                        <div id="rec3" class="rect"></div>
+                                </span>
+                                <span class="small-text" id="menu-text1">Menu</span>
                         </button>
-                        <div class="menu-text-container">
-                                <p class="small-text" id="menu-text1">menu</p>
-                        </div>
-                                <button class="search-btn" type="button" aria-label="Buscar">
+                        <div class="search-wrap">
+                                <button class="search-btn" type="button" aria-expanded="false" aria-controls="search-input" aria-label="Buscar">
                                       <img class="mgn-glass" src="resources/icos/search.png" alt="">
-                                        <p class="small-text">Buscar</p>
+                                        <span class="small-text">Buscar</span>
                               </button>
+                              <input type="search" id="search-input" class="search-input" placeholder="Buscar…" aria-label="Buscar en Pancanni" hidden>
+                        </div>
                     </div>
                     <div>
                               <h1 class="Brand">Pancanni</h1>
@@ -99,6 +102,7 @@
                                 </div>
                         </div>
                 </div>
+                <p id="search-empty" class="small-text" hidden>No se encontraron resultados.</p>
           </section>
 
           <section>

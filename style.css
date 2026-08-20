@@ -187,7 +187,7 @@ nav{
         flex-direction: column;
         height: 100%;
         width: min(620px, 100vw);
-        background-color: #D9D9D9;
+        background-color: #ffffff;
         position: fixed;
         top: 0;
         left: 0;
@@ -222,9 +222,16 @@ nav{
 }
 
 #burgerNav{
-          margin-top: 5px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
           z-index: 30;
           padding: 6px;
+}
+
+.burger-icon{
+          display: flex;
+          flex-direction: column;
 }
 
 .rect{
@@ -265,6 +272,11 @@ nav{
     text-align: left;
 }
 
+.search-wrap{
+          display: flex;
+          align-items: center;
+}
+
 .search-btn{
           display: flex;
           flex-direction: row;
@@ -272,6 +284,21 @@ nav{
 }
 .mgn-glass{
           margin-right: 12px;
+}
+
+.search-input{
+          margin-left: 10px;
+          width: 160px;
+          border: none;
+          border-bottom: 1px solid #00000060;
+          background: transparent;
+          padding: 4px 2px;
+          font-family: "Futura", sans-serif;
+          font-size: 14px;
+}
+.search-input:focus{
+          outline: none;
+          border-bottom-color: #000;
 }
 
 .nav-right{
@@ -344,6 +371,11 @@ nav{
     width: 100%;
 }
 
+#search-empty{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
 .categorie-card{
     position: relative;
     aspect-ratio: 920 / 1100;
@@ -378,14 +410,14 @@ nav{
 
 .card-button{
     width: min(470px, 90%);
-    height: 60px;
+    height: 75px;
     color: white;
     background-color: rgba(217, 217, 217, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transition: background-color .2s ease;
+    border: none;
 }
-.card-button:hover{
-    background-color: rgba(217, 217, 217, 0.35);
+
+.categorie-card.is-hidden{
+    display: none;
 }
 
 .all-products{
