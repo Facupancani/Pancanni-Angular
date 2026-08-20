@@ -1,0 +1,479 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+*,
+*::before,
+*::after {
+          box-sizing: border-box;
+}
+
+* {
+          margin: 0;
+          padding: 0;
+}
+
+html {
+          scroll-behavior: smooth;
+}
+
+body {
+          overflow-x: hidden;
+}
+
+/* Rutas relativas (sin "/" inicial) para que funcione publicado en un subdirectorio, ej. GitHub Pages */
+@font-face {
+          font-family: 'Futura';
+          src: url('resources/fonts/FUTURA45LIGHT.TTF') format('truetype');
+          font-weight: 300;
+          font-style: normal;
+}
+@font-face {
+          font-family: 'Futura';
+          src: url('resources/fonts/FUTURA46LIGHTITALIC.TTF') format('truetype');
+          font-weight: 300;
+          font-style: italic;
+}
+@font-face {
+          font-family: 'Futura';
+          src: url('resources/fonts/FUTURA55REGULAR.TTF') format('truetype');
+          font-weight: 400;
+          font-style: normal;
+}
+@font-face {
+          font-family: 'Futura';
+          src: url('resources/fonts/FUTURA56ITALIC.TTF') format('truetype');
+          font-weight: 400;
+          font-style: italic;
+}
+@font-face {
+          font-family: 'Futura';
+          src: url('resources/fonts/FUTURA65MEDIUM.TTF') format('truetype');
+          font-weight: 500;
+          font-style: normal;
+}
+@font-face {
+          font-family: 'Futura';
+          src: url('resources/fonts/FUTURA66MEDIUMITALIC.TTF') format('truetype');
+          font-weight: 500;
+          font-style: italic;
+}
+@font-face {
+          font-family: 'Futura';
+          src: url('resources/fonts/FUTURA75BOLD.TTF') format('truetype');
+          font-weight: 700;
+          font-style: normal;
+}
+@font-face {
+          font-family: 'Futura';
+          src: url('resources/fonts/FUTURA76BOLDITALIC.TTF') format('truetype');
+          font-weight: 700;
+          font-style: italic;
+}
+
+.Brand {
+          font-family: "Playfair Display SC", serif;
+          font-weight: 400;
+          font-style: normal;
+          font-size: clamp(26px, 4vw, 40px);
+}
+
+.title {
+          font-family: "Playfair Display SC", serif;
+          font-weight: 400;
+          font-style: normal;
+          font-size: clamp(24px, 3vw, 32px);
+}
+
+.subtitle{
+          font-family: "Playfair Display SC", serif;
+          font-weight: 700;
+          font-style: normal;
+          font-size: 20px;
+}
+
+.subtitle2{
+          font-family: "Playfair Display SC", serif;
+          font-weight: 400;
+          font-style: normal;
+          font-size: 20px;
+}
+
+.small-text{
+          font-family: "Futura", sans-serif;
+          font-weight: 400;
+          font-style: normal;
+          font-size: 15px;
+}
+
+.small-text2{
+          font-family: "Playfair Display SC", serif;
+          font-weight: 400;
+          font-style: normal;
+          font-size: 10px;
+          color: rgba(255, 255, 255, 0.9);
+}
+
+.underline{
+          text-decoration: underline;
+}
+
+hr{
+          border: 0;
+          height: 1px;
+          background: #00000020;
+}
+.hr2{
+          background: #00000060;
+          width: min(500px, 90%);
+}
+
+.copy {
+          margin-left: 40px;
+          margin-bottom: 30px;
+}
+
+/* Todo lo clickeable muestra mano */
+button,
+a,
+[role="button"],
+.menu-option,
+.card-button,
+#burgerNav,
+.search-btn,
+.icon-btn {
+          cursor: pointer;
+}
+
+button {
+          font: inherit;
+          color: inherit;
+          background: none;
+          border: none;
+}
+
+/* Foco visible al navegar con teclado */
+a:focus-visible,
+button:focus-visible,
+.menu-option:focus-visible {
+          outline: 2px solid #000;
+          outline-offset: 3px;
+}
+
+/* NAV */
+
+nav{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding-left: 4%;
+          padding-right: 4%;
+          position: fixed;
+          width: 100vw;
+          height: 85px;
+          top: 0;
+          background-color: #D9D9D9;
+          z-index: 99;
+}
+
+.nav-left{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: clamp(16px, 3vw, 40px);
+}
+
+#menu-desp{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: min(620px, 100vw);
+        background-color: #D9D9D9;
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: transform .35s ease, opacity .35s ease;
+        z-index: 40;
+}
+
+#menu-desp.is-open{
+        transform: translateX(0);
+        opacity: 1;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease;
+    z-index: 35;
+}
+
+#overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#burgerNav{
+          margin-top: 5px;
+          z-index: 30;
+          padding: 6px;
+}
+
+.rect{
+          margin-bottom: 4px;
+          width: 22px;
+          height: 3px;
+          background-color: black;
+          transform-origin: center;
+          transition: transform .3s ease, opacity .3s ease;
+}
+
+/* Hamburguesa -> X con transform, prolija y sin animar a mano cada barra */
+#burgerNav.is-open #rec1{
+          transform: translateY(7px) rotate(45deg);
+}
+#burgerNav.is-open #rec2{
+          opacity: 0;
+}
+#burgerNav.is-open #rec3{
+          transform: translateY(-7px) rotate(-45deg);
+}
+
+#menu-text1{
+          position: relative;
+          z-index: 30;
+}
+
+#menu-options{
+    display: flex;
+    flex-direction: column;
+    width: min(550px, 90%);
+    margin-top: 100px;
+}
+
+.menu-option{
+    width: fit-content;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.search-btn{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+}
+.mgn-glass{
+          margin-right: 12px;
+}
+
+.nav-right{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: clamp(12px, 2vw, 24px);
+}
+
+.icon-btn{
+          display: flex;
+          align-items: center;
+          padding: 4px;
+}
+
+/* HERO */
+
+#hero{
+          height: 730px;
+          overflow: hidden;
+          background-image: url(resources/media/HERO.webp);
+          background-size: cover;
+          background-position: center;
+          color: white;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: end;
+          width: 100%;
+          margin-top: 85px;
+          text-align: center;
+}
+
+.mid-hero{
+          margin-top: 15px;
+          margin-bottom: 35px;
+          font-size: clamp(20px, 3vw, 28px);
+}
+.down-hero{
+          margin-bottom: 35px;
+}
+
+/* BODY */
+
+#shopping{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4%;
+}
+
+#ShopTEXT{
+    margin-top: 90px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.categorie-wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1920px;
+}
+
+#categories-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+.categorie-card{
+    position: relative;
+    aspect-ratio: 920 / 1100;
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-content{
+    position: absolute;
+    inset: 0;
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 8%;
+    width: 100%;
+}
+
+.card-title{
+    margin-bottom: 24px;
+}
+
+.card-img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-button{
+    width: min(470px, 90%);
+    height: 60px;
+    color: white;
+    background-color: rgba(217, 217, 217, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: background-color .2s ease;
+}
+.card-button:hover{
+    background-color: rgba(217, 217, 217, 0.35);
+}
+
+.all-products{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1920 / 1182;
+    margin-top: 120px;
+    overflow: hidden;
+}
+
+.all-products .card-content{
+    padding-bottom: 6%;
+}
+
+/* FOOTER */
+
+#fat-footer{
+          margin-top: 60px;
+}
+
+#footer-up{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          gap: 40px;
+          margin-top: 60px;
+          margin-bottom: 45px;
+          margin-right: 5%;
+          margin-left: 5%;
+}
+#footer-up p{
+          margin-top: 20px;
+}
+#footer-help{
+          max-width: 360px;
+}
+#footer-help p, h3{
+          max-width: fit-content;
+}
+
+#footer-span{
+          max-width: fit-content;
+}
+
+#footer-down{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 140px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px){
+          nav{
+                    height: 70px;
+          }
+          #hero{
+                    height: 520px;
+                    margin-top: 70px;
+          }
+          .search-btn .small-text{
+                    display: none;
+          }
+          #categories-container{
+                    grid-template-columns: 1fr;
+          }
+          .categorie-card{
+                    aspect-ratio: 4 / 5;
+          }
+          .all-products{
+                    aspect-ratio: 4 / 5;
+                    margin-top: 60px;
+          }
+          #footer-up{
+                    flex-direction: column;
+                    text-align: center;
+                    align-items: center;
+                    margin-left: 8%;
+                    margin-right: 8%;
+          }
+          #footer-help,
+          #footer-span{
+                    max-width: 100%;
+          }
+          .copy{
+                    margin-left: 20px;
+          }
+}
