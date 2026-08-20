@@ -15,7 +15,7 @@
 
 <body>
 
-          <nav>
+          <nav class="topbar">
                   <div id="overlay"></div>
                     <div class="nav-left">
                         <button id="burgerNav" type="button" aria-expanded="false" aria-controls="menu-desp">
@@ -26,37 +26,96 @@
                                 </span>
                                 <span class="small-text" id="menu-text1">Menu</span>
                         </button>
-                        <div class="search-wrap">
-                                <button class="search-btn" type="button" aria-expanded="false" aria-controls="search-input" aria-label="Buscar">
-                                      <img class="mgn-glass" src="resources/icos/search.png" alt="">
-                                        <span class="small-text">Buscar</span>
-                              </button>
-                              <input type="search" id="search-input" class="search-input" placeholder="Buscar…" aria-label="Buscar en Pancanni" hidden>
-                        </div>
+                        <label class="search-wrap" for="search-input">
+                                <img class="mgn-glass" src="resources/icos/search.png" alt="">
+                                <span class="visually-hidden">Buscar</span>
+                                <input type="search" id="search-input" class="search-input" placeholder="Buscar">
+                        </label>
                     </div>
-                    <div>
+                    <div class="nav-brand">
                               <h1 class="Brand">Pancanni</h1>
                     </div>
                     <div class="nav-right">
-                              <button class="icon-btn" type="button" aria-label="Favoritos"><img src="resources/icos/heart.png" alt=""></button>
-                              <button class="icon-btn" type="button" aria-label="Carrito"><img src="resources/icos/shopBag.png" alt=""></button>
-                              <button class="icon-btn" type="button" aria-label="Mi cuenta"><img src="resources/icos/userProfile.png" alt=""></button>
+                              <div class="nav-popover">
+                                        <button class="icon-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="favorites-panel" aria-label="Favoritos"><img src="resources/icos/heart.png" alt=""></button>
+                                        <div id="favorites-panel" class="popover-panel" role="dialog" aria-label="Favoritos">
+                                                  <h2 class="popover-title">Favoritos</h2>
+                                                  <ul class="popover-list">
+                                                            <li class="popover-item">
+                                                                      <img class="popover-thumb" src="resources/media/Bolsos.webp" alt="">
+                                                                      <div class="popover-item-info">
+                                                                                <p class="popover-item-name">Bolso Cruise 2025</p>
+                                                                                <p class="popover-item-price">$ 890</p>
+                                                                      </div>
+                                                            </li>
+                                                            <li class="popover-item">
+                                                                      <img class="popover-thumb" src="resources/media/Calzado.webp" alt="">
+                                                                      <div class="popover-item-info">
+                                                                                <p class="popover-item-name">Calzado Tradizioni</p>
+                                                                                <p class="popover-item-price">$ 650</p>
+                                                                      </div>
+                                                            </li>
+                                                  </ul>
+                                                  <button type="button" class="popover-action">Ver todos los favoritos</button>
+                                        </div>
+                              </div>
+                              <div class="nav-popover">
+                                        <button class="icon-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="cart-panel" aria-label="Carrito"><img src="resources/icos/shopBag.png" alt=""></button>
+                                        <div id="cart-panel" class="popover-panel" role="dialog" aria-label="Carrito">
+                                                  <h2 class="popover-title">Tu carrito</h2>
+                                                  <ul class="popover-list">
+                                                            <li class="popover-item">
+                                                                      <img class="popover-thumb" src="resources/media/Hombre.webp" alt="">
+                                                                      <div class="popover-item-info">
+                                                                                <p class="popover-item-name">Abrigo de lana</p>
+                                                                                <p class="popover-item-meta">Talle M · Cant. 1</p>
+                                                                                <p class="popover-item-price">$ 1.240</p>
+                                                                      </div>
+                                                            </li>
+                                                            <li class="popover-item">
+                                                                      <img class="popover-thumb" src="resources/media/Mujer.webp" alt="">
+                                                                      <div class="popover-item-info">
+                                                                                <p class="popover-item-name">Vestido Cruise</p>
+                                                                                <p class="popover-item-meta">Talle S · Cant. 1</p>
+                                                                                <p class="popover-item-price">$ 980</p>
+                                                                      </div>
+                                                            </li>
+                                                  </ul>
+                                                  <div class="popover-subtotal">
+                                                            <span>Subtotal</span>
+                                                            <span>$ 2.220</span>
+                                                  </div>
+                                                  <button type="button" class="popover-action popover-action-primary">Finalizar compra</button>
+                                        </div>
+                              </div>
+                              <div class="nav-popover">
+                                        <button class="icon-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="account-panel" aria-label="Mi cuenta"><img src="resources/icos/userProfile.png" alt=""></button>
+                                        <div id="account-panel" class="popover-panel" role="dialog" aria-label="Mi cuenta">
+                                                  <h2 class="popover-title">Mi cuenta</h2>
+                                                  <button type="button" class="popover-link">Iniciar sesión</button>
+                                                  <button type="button" class="popover-link">Crear cuenta</button>
+                                                  <hr class="popover-divider">
+                                                  <button type="button" class="popover-link">Mis pedidos</button>
+                                                  <button type="button" class="popover-link">Favoritos</button>
+                                                  <button type="button" class="popover-link">Configuración</button>
+                                        </div>
+                              </div>
                     </div>
           </nav>
 
           <section id="menu-desp" aria-label="Menú principal">
+                  <button id="menu-close" type="button" class="menu-close" aria-label="Cerrar menú">&times;</button>
                   <nav id="menu-options">
-                          <h2 class="menu-option">Desfile Cruise 2025</h2>
-                          <p class="subtitle menu-option">Novedades</p>
-                          <p class="subtitle menu-option">Bolsos</p>
-                          <p class="subtitle menu-option">Mujer</p>
-                          <p class="subtitle menu-option">Hombre</p>
-                          <p class="subtitle menu-option">Niños</p>
-                          <p class="subtitle menu-option">Joyeria y Relojes</p>
-                          <p class="subtitle menu-option">Fragancias</p>
-                          <p class="subtitle menu-option">Regalos</p>
+                          <h2 class="menu-featured">Desfile Cruise 2025</h2>
+                          <button type="button" class="subtitle menu-option">Novedades</button>
+                          <button type="button" class="subtitle menu-option">Bolsos</button>
+                          <button type="button" class="subtitle menu-option">Mujer</button>
+                          <button type="button" class="subtitle menu-option">Hombre</button>
+                          <button type="button" class="subtitle menu-option">Niños</button>
+                          <button type="button" class="subtitle menu-option">Joyeria y Relojes</button>
+                          <button type="button" class="subtitle menu-option">Fragancias</button>
+                          <button type="button" class="subtitle menu-option">Regalos</button>
                   </nav>
-                  <hr class="hr2">
           </section>
 
           <section id="hero">

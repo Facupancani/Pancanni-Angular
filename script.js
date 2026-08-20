@@ -6,6 +6,7 @@
     var menu = document.getElementById('menu-desp');
     var menuText = document.getElementById('menu-text1');
     var overlay = document.getElementById('overlay');
+    var closeBtn = document.getElementById('menu-close');
     var isOpen = false;
 
     function setMenu(open) {
@@ -15,6 +16,8 @@
         overlay.classList.toggle('is-open', open);
         burger.setAttribute('aria-expanded', String(open));
         menuText.textContent = open ? 'Cerrar' : 'Menu';
+        // Mientras el panel está fuera de pantalla, sus botones no deben ser alcanzables con Tab.
+        menu.inert = !open;
     }
 
     function toggleMenu() {
@@ -27,6 +30,11 @@
         setMenu(false);
     });
 
+    closeBtn.addEventListener('click', function () {
+        setMenu(false);
+        burger.focus();
+    });
+
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' && isOpen) {
             setMenu(false);
@@ -36,14 +44,12 @@
 })();
 
 //** BUSCADOR */
-// Filtra las cards de categorías por coincidencia de texto contra el título de cada una.
+// El input vive siempre en la nav (icono + placeholder "Buscar"); filtra las
+// cards de categorías por coincidencia de texto contra el título de cada una.
 (function () {
-    var wrap = document.querySelector('.search-wrap');
-    var btn = wrap.querySelector('.search-btn');
     var input = document.getElementById('search-input');
     var cards = Array.prototype.slice.call(document.querySelectorAll('#categories-container .categorie-card'));
     var emptyMsg = document.getElementById('search-empty');
-    var isOpen = false;
 
     function normalize(text) {
         return text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -61,31 +67,54 @@
         emptyMsg.hidden = !q || visibleCount > 0;
     }
 
-    function setSearch(open) {
-        isOpen = open;
-        wrap.classList.toggle('is-open', open);
-        btn.setAttribute('aria-expanded', String(open));
-        input.hidden = !open;
-        if (open) {
-            input.focus();
-        } else {
-            input.value = '';
-            filterCards('');
-        }
-    }
-
-    btn.addEventListener('click', function () {
-        setSearch(!isOpen);
-    });
-
     input.addEventListener('input', function () {
         filterCards(input.value);
     });
 
+    input.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            input.value = '';
+            filterCards('');
+            input.blur();
+        }
+    });
+})();
+
+//** POPOVERS DE FAVORITOS / CARRITO / CUENTA */
+// Contenido de muestra ("mock"): no hay backend, solo demuestran la interacción.
+(function () {
+    var popovers = Array.prototype.slice.call(document.querySelectorAll('.nav-popover'));
+
+    function closeAll(exceptPopover) {
+        popovers.forEach(function (pop) {
+            if (pop === exceptPopover) return;
+            pop.querySelector('.icon-btn').setAttribute('aria-expanded', 'false');
+            pop.querySelector('.popover-panel').classList.remove('is-open');
+        });
+    }
+
+    popovers.forEach(function (pop) {
+        var trigger = pop.querySelector('.icon-btn');
+        var panel = pop.querySelector('.popover-panel');
+
+        trigger.addEventListener('click', function (event) {
+            event.stopPropagation();
+            var open = !panel.classList.contains('is-open');
+            closeAll(open ? pop : null);
+            trigger.setAttribute('aria-expanded', String(open));
+            panel.classList.toggle('is-open', open);
+        });
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('.nav-popover')) {
+            closeAll(null);
+        }
+    });
+
     document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && isOpen) {
-            setSearch(false);
-            btn.focus();
+        if (event.key === 'Escape') {
+            closeAll(null);
         }
     });
 })();
